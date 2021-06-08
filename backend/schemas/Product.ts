@@ -12,7 +12,6 @@ export const Product = list({
         }),
         photo: relationship({
             ref: 'ProductImage.product', // This is mirrored as 'Product.photo' in the ProductImage
-            many: true,
             ui: {
                 displayMode: 'cards',
                 cardFields: ['image', 'altText'], // what fields display from image
