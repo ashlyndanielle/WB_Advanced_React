@@ -6,6 +6,7 @@ import 'dotenv/config';
 // schemas
 import { User } from './schemas/User';
 import { Product } from './schemas/Product';
+import { ProductImage } from './schemas/ProductImage';
 
 const databaseURL = process.env.DATABASE_URL || 'mongodb://localhost/keystone-sick-fits-tutorial';
 
@@ -39,7 +40,8 @@ export default withAuth(
         },
         lists: createSchema({
             User,
-            Product
+            Product,
+            ProductImage
         }),
         ui: {
             // show the keystone UI only for people who pass this test

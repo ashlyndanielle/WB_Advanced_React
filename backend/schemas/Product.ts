@@ -1,4 +1,3 @@
-import { createAuth } from '@keystone-next/auth';
 import { integer, select, text } from '@keystone-next/fields';
 import { list } from '@keystone-next/keystone/schema';
 
