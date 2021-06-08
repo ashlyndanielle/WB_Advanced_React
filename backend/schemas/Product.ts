@@ -1,4 +1,4 @@
-import { integer, select, text } from '@keystone-next/fields';
+import { integer, relationship, select, text } from '@keystone-next/fields';
 import { list } from '@keystone-next/keystone/schema';
 
 export const Product = list({
@@ -8,6 +8,21 @@ export const Product = list({
         description: text({
             ui: {
                 displayMode: 'textarea'
+            }
+        }),
+        photo: relationship({
+            ref: 'ProductImage.product', // A string of the form <listKey> or <listKey>.<fieldPath>
+            many: true,
+            ui: {
+                displayMode: 'cards',
+                cardFields: ['image', 'altText'],
+                inlineConnect: true,
+                inlineCreate: {
+                    fields: ['image', 'altText']
+                },
+                inlineEdit: {
+                    fields: ['image', 'altText']
+                }
             }
         }),
         status: select({
@@ -24,6 +39,10 @@ export const Product = list({
             }
         }),
         price: integer(),
-        // TODO: photo
+    },
+    ui: {
+        listView: {
+            initialColumns: ['name', 'status']
+        }
     }
 })
