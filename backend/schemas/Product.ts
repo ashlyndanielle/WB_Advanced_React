@@ -11,11 +11,11 @@ export const Product = list({
             }
         }),
         photo: relationship({
-            ref: 'ProductImage.product', // A string of the form <listKey> or <listKey>.<fieldPath>
+            ref: 'ProductImage.product', // This is mirrored as 'Product.photo' in the ProductImage
             many: true,
             ui: {
                 displayMode: 'cards',
-                cardFields: ['image', 'altText'],
+                cardFields: ['image', 'altText'], // what fields display from image
                 inlineConnect: true,
                 inlineCreate: {
                     fields: ['image', 'altText']
@@ -35,14 +35,14 @@ export const Product = list({
             defaultValue: 'DRAFT',
             ui: {
                 displayMode: 'segmented-control',
-                createView: { fieldMode: 'hidden' }
+                createView: { fieldMode: 'hidden' } // hides field when creating product
             }
         }),
         price: integer(),
     },
     ui: {
         listView: {
-            initialColumns: ['name', 'status']
+            initialColumns: ['name', 'status'] // inital visible columns in product list
         }
     }
 })
